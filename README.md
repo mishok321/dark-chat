@@ -15,6 +15,7 @@ The heart of the application is the [`ChatAdapter`](https://github.com/mishok321
 ![Adapter](./adapter.png)
 After the client is added to the allPeers set, the backend starts listening to the join event.
 ![Connect handler](./connect_handler.png)
+
 After the `join` event is received, the client begins to establish a p2p connection with all other participants in the room for real-time audio transmission. This is done through the ADD_PEER event, which the server sends to each client in the room, along with a boolean value (true for the client initializing the p2p connection by creating an offer, false for all other clients creating an answer), the client's ID, and their username. After that, the socket server acts as a signaling server, receiving and relaying ice candidates and offers from clients through the RELAY_ICE and RELAY_SDP events.
 ![Join Handler](./on_join.png)
 The same applies to other events, depending on their logic.
